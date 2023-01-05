@@ -1,0 +1,34 @@
+#include <stdio.h>
+ 
+void get_minmax(int score[][1])
+{
+    int i, s, min, max;
+    for (s = 0; s < 1; s++) {
+        min = max = score[0][s];
+        for (i = 0; i < 10; i++) {
+            if (score[i][s] < min) min = score[i][s];
+            if (score[i][s] > max) max = score[i][s];
+        }
+        printf("시험의 최대점수=%d\n", max);
+        printf("시험의 최저점수=%d\n\n", min);
+    }
+}
+ 
+int main(void)
+{
+    int i, s;
+    int score[10][1]; //학생 10명과 3번의 시험
+    
+    puts("  점수");
+    puts("---------");
+    for (i = 0; i < 10; i++) {
+        for (s = 0; s < 1; s++) {
+            score[i][s] = rand() % 100 + 1;
+            printf("%8d ", score[i][s]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+    get_minmax(score);
+    return 0;
+}
